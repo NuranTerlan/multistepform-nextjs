@@ -7,10 +7,7 @@ import FormStepper from "../components/FormStepper";
 
 const useStyles = makeStyles({
 	root: {
-		maxWidth: 1000,
-		marginLeft: "50%",
-		transform: "translateX(-50%)",
-		marginTop: 50,
+		marginTop: 100,
 	},
 });
 
@@ -39,11 +36,11 @@ export default function Home() {
 				>
 					<FormStep
 						label="Personal Data"
-						validationSchema={yup.object({
-							firstname: yup.string().required(),
-							lastname: yup.string().required(),
-							millionaire: yup.bool(),
-						})}
+						// validationSchema={yup.object({
+						// 	firstname: yup.string().required(),
+						// 	lastname: yup.string().required(),
+						// 	millionaire: yup.bool(),
+						// })}
 					>
 						<Box paddingBottom={2}>
 							<Field
