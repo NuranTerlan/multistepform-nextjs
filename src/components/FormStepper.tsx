@@ -25,30 +25,31 @@ const FormStepper = ({ children, ...props }: FormikConfig<FormikValues>) => {
 	return (
 		<Formik
 			{...props}
-			validationSchema={currentChild.props.validationSchema}
+			validationSchema={currentChild?.props.validationSchema}
 			onSubmit={async (values, helpers) => {
 				if (isLastStep()) {
 					await props.onSubmit(values, helpers);
 					setCompleted(true);
 				} else {
+					console.log("next clicked");
 					setStep((prevState) => prevState + 1);
-					helpers.setTouched({});
+					// helpers.setTouched({});
 				}
 			}}
 		>
 			{({ isSubmitting }) => (
 				<Form>
 					<Stepper alternativeLabel activeStep={step}>
-						{childrenArray.map((child, index) => {
+						{childrenArray.map((child, index) => (
 							<Step
-								key={child.props.label}
+								key={child?.props.label}
 								completed={step > index || completed}
 							>
-								<StepLabel>{child.props.label}</StepLabel>
-							</Step>;
-						})}
+								<StepLabel>{child?.props.label}</StepLabel>
+							</Step>
+						))}
 					</Stepper>
-					{currentChild}
+					{currentChild && currentChild}
 					<Grid container spacing={2}>
 						{step > 0 ? (
 							<Grid item>
@@ -56,7 +57,7 @@ const FormStepper = ({ children, ...props }: FormikConfig<FormikValues>) => {
 									disabled={isSubmitting}
 									variant="contained"
 									color="primary"
-									onClick={() => setStep((prevState) => prevState + 1)}
+									onClick={() => setStep((prevState) => prevState - 1)}
 								>
 									Back
 								</Button>
