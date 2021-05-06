@@ -23,8 +23,8 @@ export default function Home() {
 			<CardContent>
 				<FormStepper
 					initialValues={{
-						firstName: "",
-						lastName: "",
+						firstname: "",
+						lastname: "",
 						millionaire: false,
 						money: 0,
 						description: "",
@@ -36,16 +36,16 @@ export default function Home() {
 				>
 					<FormStep
 						label="Personal Data"
-						// validationSchema={yup.object({
-						// 	firstname: yup.string().required(),
-						// 	lastname: yup.string().required(),
-						// 	millionaire: yup.bool(),
-						// })}
+						validationSchema={yup.object({
+							firstname: yup.string().required(),
+							lastname: yup.string().required(),
+							millionaire: yup.bool(),
+						})}
 					>
 						<Box paddingBottom={2}>
 							<Field
 								fullWidth
-								name="firstName"
+								name="firstname"
 								component={TextField}
 								label="First Name"
 							/>
@@ -53,7 +53,7 @@ export default function Home() {
 						<Box paddingBottom={2}>
 							<Field
 								fullWidth
-								name="lastName"
+								name="lastname"
 								component={TextField}
 								label="Last Name"
 							/>
