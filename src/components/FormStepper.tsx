@@ -30,6 +30,7 @@ const FormStepper = ({ children, ...props }: FormikConfig<FormikValues>) => {
 				if (isLastStep()) {
 					await props.onSubmit(values, helpers);
 					setCompleted(true);
+					helpers.resetForm();
 				} else {
 					console.log("next clicked");
 					setStep((prevState) => prevState + 1);
