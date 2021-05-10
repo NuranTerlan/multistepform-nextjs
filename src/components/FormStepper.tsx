@@ -13,6 +13,7 @@ import {
 	Stepper,
 } from "@material-ui/core";
 import MultiAlert from "@material-ui/lab/Alert";
+import { useRouter } from "next/router";
 
 const Alert = (props) => {
 	return <MultiAlert elevation={6} variant="filled" {...props} />;
@@ -23,6 +24,8 @@ const GrowTransition = (props) => {
 };
 
 const FormStepper = ({ children, ...props }: FormikConfig<FormikValues>) => {
+	const router = useRouter();
+
 	const [snackState, setSnackState] = React.useState({
 		open: false,
 		Transition: Fade,
@@ -64,6 +67,7 @@ const FormStepper = ({ children, ...props }: FormikConfig<FormikValues>) => {
 						setCompleted(true);
 						handleSnackOpen(GrowTransition);
 						helpers.resetForm();
+						router.push("/dashboard");
 					} else {
 						console.log("next clicked");
 						setStep((prevState) => prevState + 1);
